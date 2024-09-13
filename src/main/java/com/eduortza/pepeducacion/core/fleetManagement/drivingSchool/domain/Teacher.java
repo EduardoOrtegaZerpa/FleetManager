@@ -1,5 +1,6 @@
 package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain;
 
+import com.eduortza.pepeducacion.core.shared.domain.DNI;
 import com.eduortza.pepeducacion.core.shared.domain.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,5 +12,5 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Teacher extends Entity {
-    private String DNI;
+    private DNI DNI;
 }

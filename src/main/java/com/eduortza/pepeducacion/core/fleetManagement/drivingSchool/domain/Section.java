@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Section extends Entity {
-    private String location;
+    private Location location;
 }

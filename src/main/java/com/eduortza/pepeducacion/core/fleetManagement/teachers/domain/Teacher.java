@@ -1,6 +1,7 @@
 package com.eduortza.pepeducacion.core.fleetManagement.teachers.domain;
 
 import com.eduortza.pepeducacion.core.shared.domain.AggregateRoot;
+import com.eduortza.pepeducacion.core.shared.domain.DNI;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,7 +21,7 @@ public class Teacher extends AggregateRoot {
     private String name;
     private String surname;
     private Number age;
-    private String gender;
+    private Gender gender;
 
 
 }

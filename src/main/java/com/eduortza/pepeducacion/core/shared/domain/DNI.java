@@ -1,7 +1,5 @@
-package com.eduortza.pepeducacion.core.fleetManagement.teachers.domain;
+package com.eduortza.pepeducacion.core.shared.domain;
 
-import com.eduortza.pepeducacion.core.shared.domain.DomainException;
-import com.eduortza.pepeducacion.core.shared.domain.ValueObject;
 import lombok.Getter;
 import lombok.ToString;
 
