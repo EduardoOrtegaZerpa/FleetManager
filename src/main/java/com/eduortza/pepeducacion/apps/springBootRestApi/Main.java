@@ -1,13 +1,11 @@
-package com.eduortza.pepeducacion;
+package com.eduortza.pepeducacion.apps.springBootRestApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PepeducacionApplication {
-
+public class Main {
 	public static void main(String[] args) {
-		SpringApplication.run(PepeducacionApplication.class, args);
+		SpringApplication.run(Main.class, args);
 	}
-
 }
