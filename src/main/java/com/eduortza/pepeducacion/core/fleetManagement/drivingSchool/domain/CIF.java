@@ -1,14 +1,13 @@
 package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain;
 
 import com.eduortza.pepeducacion.core.shared.domain.DomainException;
-import lombok.EqualsAndHashCode;
+import com.eduortza.pepeducacion.core.shared.domain.ValueObject;
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
-@EqualsAndHashCode
-public class CIF {
+public class CIF extends ValueObject {
     private final String cif;
 
     public CIF(String cif) {
@@ -39,7 +38,6 @@ public class CIF {
     }
 
     private boolean isValidFirstChar(char c) {
-        // Letras válidas que identifican el tipo de entidad
         return "ABCDEFGHJNPQRSUVW".indexOf(c) != -1;
     }
 
