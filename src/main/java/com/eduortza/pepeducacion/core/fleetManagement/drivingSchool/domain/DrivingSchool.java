@@ -22,6 +22,9 @@ public class DrivingSchool extends AggregateRoot {
 
     public void addSection(Section section) {
         this.sections.add(section);
+        this.record(new DrivingSchoolSectionHasBeenCreated(
+                this.getId().toString(),
+                section.getId().toString()));
     }
 
     public void addTeacher(Teacher teacher) {

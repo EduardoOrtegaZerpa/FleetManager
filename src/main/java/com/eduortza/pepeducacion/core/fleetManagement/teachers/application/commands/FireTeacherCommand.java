@@ -1,4 +1,4 @@
 package com.eduortza.pepeducacion.core.fleetManagement.teachers.application.commands;
 
-public class TeacherHirer {
+public class FireTeacherCommand {
 }
