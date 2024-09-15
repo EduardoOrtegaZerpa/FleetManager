@@ -10,17 +10,14 @@ import javax.management.Query;
 import java.util.List;
 
 public class GetDrivingSchoolsQuery implements IQuery<Void, List<DrivingSchool>> {
-    private final IDrivingSchoolRepository drivingSchoolRepo;
+    private final IDrivingSchoolRepository repository;
 
-    public GetDrivingSchoolsQuery(IDrivingSchoolRepository drivingSchoolRepo) {
-        this.drivingSchoolRepo = drivingSchoolRepo;
-    }
-
-    public List<DrivingSchool> execute() {
+    public GetDrivingSchoolsQuery(IDrivingSchoolRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public Result<Void> query(List<DrivingSchool> params) {
-        return Result.success(drivingSchoolRepo.findAll());
+    public Result<List<DrivingSchool>> query(Void params) {
+        return Result.success(repository.findAll().stream().toList());
     }
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IEventBus {
     void publish(final List<DomainEvent> events);
-    void subscribe(final String eventId, EventHandler handler);
+    void subscribe(IEventHandler handler);
 }

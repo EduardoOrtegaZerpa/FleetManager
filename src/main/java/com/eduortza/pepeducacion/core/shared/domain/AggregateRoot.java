@@ -2,7 +2,6 @@ package com.eduortza.pepeducacion.core.shared.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class AggregateRoot extends Entity{
 
@@ -14,7 +13,7 @@ public class AggregateRoot extends Entity{
         return events;
     }
 
-    public void record(DomainEvent event){
+    public void recordEvent(DomainEvent event){
         this.events.add(event);
     }
 

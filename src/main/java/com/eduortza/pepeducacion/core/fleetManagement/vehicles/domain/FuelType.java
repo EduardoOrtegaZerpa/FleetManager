@@ -16,20 +16,32 @@ public class FuelType extends ValueObject {
         ELECTRIC,
         HYBRID,
         LPG,
-        CNG
+        CNG;
+
+        public static Fuel fromString(String fuel) {
+            if (fuel == null || fuel.isBlank()) {
+                throw new DomainException("Fuel string cannot be null or empty.");
+            }
+
+            try {
+                return Fuel.valueOf(fuel.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new DomainException("Invalid fuel value: " + fuel);
+            }
+        }
     }
 
-    public FuelType(Fuel fuel) {
-        if (fuel == null) {
-            throw new DomainException("Fuel type cannot be null.");
+    public FuelType(String fuel) {
+        if (fuel == null || fuel.isBlank()) {
+            throw new DomainException("Fuel string cannot be null or empty.");
         }
-        this.fuel = fuel;
+        this.fuel = Fuel.fromString(fuel);
     }
 
-    public void updateFuelType(Fuel newFuel) {
-        if (newFuel == null) {
-            throw new DomainException("Fuel type cannot be null.");
+    public void updateFuelType(String newFuel) {
+        if (newFuel == null || newFuel.isBlank()) {
+            throw new DomainException("Fuel string cannot be null or empty.");
         }
-        this.fuel = newFuel;
+        this.fuel = Fuel.fromString(newFuel);
     }
 }

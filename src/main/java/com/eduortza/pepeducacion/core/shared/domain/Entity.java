@@ -9,9 +9,14 @@ import java.util.UUID;
 @Setter
 public class Entity {
     private UUID id;
+    private boolean isActive = true;
 
 
     public Entity() {
         this.id = UUID.randomUUID();
+    }
+
+    public void makeInactive(){
+        this.isActive = false;
     }
 }

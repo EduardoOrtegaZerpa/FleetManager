@@ -1,5 +1,6 @@
 package com.eduortza.pepeducacion.core.fleetManagement.teachers.domain;
 
+import com.eduortza.pepeducacion.core.shared.domain.DomainException;
 import com.eduortza.pepeducacion.core.shared.domain.ValueObject;
 import lombok.Getter;
 import lombok.ToString;
@@ -15,20 +16,32 @@ public class Gender extends ValueObject {
         NON_BINARY,
         UNDISCLOSED,
         HERMAPHRODITE,
-        HELICOPTER
+        HELICOPTER;
+
+        public static GenderType fromString(String gender) {
+            if (gender == null || gender.isBlank()) {
+                throw new IllegalArgumentException("Gender string cannot be null or empty.");
+            }
+
+            try {
+                return GenderType.valueOf(gender.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Invalid gender value: " + gender);
+            }
+        }
     }
 
-    public Gender(GenderType gender) {
-        if (gender == null) {
-            throw new IllegalArgumentException("Gender cannot be null.");
+    public Gender(String gender) {
+        if (gender == null || gender.isBlank()) {
+            throw new IllegalArgumentException("Gender string cannot be null or empty.");
         }
-        this.gender = gender;
+        this.gender = GenderType.fromString(gender);
     }
 
-    public void updateGender(GenderType newGender) {
-        if (newGender == null) {
-            throw new IllegalArgumentException("Gender cannot be null.");
+    public void updateGender(String newGender) {
+        if (newGender == null || newGender.isBlank()) {
+            throw new IllegalArgumentException("Gender string cannot be null or empty.");
         }
-        this.gender = newGender;
+        this.gender = GenderType.fromString(newGender);
     }
 }
