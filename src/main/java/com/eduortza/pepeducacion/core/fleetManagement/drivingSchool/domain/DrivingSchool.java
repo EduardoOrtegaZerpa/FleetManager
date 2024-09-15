@@ -18,4 +18,17 @@ public class DrivingSchool extends AggregateRoot {
     private List<Section> sections;
     private List<Teacher> teachers;
     private List<Vehicle> vehicles;
+
+
+    public void addSection(Section section) {
+        this.sections.add(section);
+    }
+
+    public void addTeacher(Teacher teacher) {
+        this.teachers.add(teacher);
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        this.vehicles.add(vehicle);
+    }
 }

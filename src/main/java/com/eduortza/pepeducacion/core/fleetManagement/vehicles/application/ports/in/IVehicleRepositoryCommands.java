@@ -1,4 +1,4 @@
-package com.eduortza.pepeducacion.core.fleetManagement.vehicles.ports.in;
+package com.eduortza.pepeducacion.core.fleetManagement.vehicles.application.ports.in;
 
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.CIF;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Vehicle;
