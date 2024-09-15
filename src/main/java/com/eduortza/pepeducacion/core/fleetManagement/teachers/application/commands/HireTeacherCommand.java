@@ -38,7 +38,7 @@ public class HireTeacherCommand implements ICommand<HireTeacherDTO, Teacher> {
             this.repository.save(teacher);
             this.bus.publish(teacher.pullDomainEvents());
             return Result.success(teacher);
-        } catch (DomainException exception){
+        } catch (Exception exception){
             return Result.failure(exception.getMessage());
         }
     }

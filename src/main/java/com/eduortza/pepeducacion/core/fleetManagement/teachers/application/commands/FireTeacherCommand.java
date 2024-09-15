@@ -29,7 +29,7 @@ public class FireTeacherCommand implements ICommand<FireTeacherDTO, Void> {
             this.repository.save(teacher);
             this.bus.publish(teacher.pullDomainEvents());
             return Result.success(null);
-        } catch (DomainException exception){
+        } catch (Exception exception){
             return Result.failure(exception.getMessage());
         }
     }

@@ -31,7 +31,7 @@ public class AssociateVehicleCommand implements ICommand<AssociateVehicleDTO, Vo
             this.repository.save(vehicle);
             this.bus.publish(vehicle.pullDomainEvents());
             return Result.success(null);
-        } catch (DomainException exception) {
+        } catch (Exception exception) {
             return Result.failure(exception.getMessage());
         }
     }

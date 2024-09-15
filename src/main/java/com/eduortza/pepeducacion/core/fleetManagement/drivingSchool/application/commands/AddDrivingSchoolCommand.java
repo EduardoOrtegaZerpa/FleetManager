@@ -26,7 +26,7 @@ public class AddDrivingSchoolCommand implements ICommand<AddDrivingSchoolDTO, Dr
             repository.save(drivingSchool);
             eventBus.publish(drivingSchool.pullDomainEvents());
             return Result.success(drivingSchool);
-        }catch (DomainException exception){
+        }catch (Exception exception){
             return Result.failure(exception.getMessage());
         }
     }

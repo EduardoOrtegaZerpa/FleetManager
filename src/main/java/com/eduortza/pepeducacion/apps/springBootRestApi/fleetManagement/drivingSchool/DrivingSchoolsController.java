@@ -1,14 +1,20 @@
 package com.eduortza.pepeducacion.apps.springBootRestApi.fleetManagement.drivingSchool;
 
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.commands.AddDrivingSchoolCommand;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.commands.AddDrivingSchoolDTO;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.commands.OpenSectionCommand;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.commands.OpenSectionDTO;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.handlers.TeacherHasBeenFiredEventHandler;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.handlers.TeacherHasBeenHiredEventHandler;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.handlers.VehicleHasBeenBuyedEventHandler;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.ports.IDrivingSchoolRepository;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.queries.GetDrivingSchoolsQuery;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.DrivingSchool;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Section;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.InMemoryDrivingSchoolRepository;
 import com.eduortza.pepeducacion.core.shared.application.IEventBus;
+import com.eduortza.pepeducacion.core.shared.domain.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,18 +34,24 @@ public class DrivingSchoolsController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<DrivingSchool>> getDrivingSchoolsQuery() {
-        
+    public Result<List<DrivingSchool>> getDrivingSchoolsQuery() {
+        var query = new GetDrivingSchoolsQuery(this.repository);
+        return query.query(null);
     }
 
     @PostMapping("/")
-    public String addDrivingSchoolCommand() {
-        return "hello from driving schools";
+    public Result<DrivingSchool> addDrivingSchoolCommand(@RequestBody AddDrivingSchoolDTO dto) {
+        var command = new AddDrivingSchoolCommand(this.repository, this.eventBus);
+        return command.run(dto);
     }
 
     @PostMapping("/{id}/sections")
-    public String openDrivingSchoolSectionCommand(@PathVariable String id) {
-        return "hello from driving schools";
+    public Result<Section> openDrivingSchoolSectionCommand(
+            @PathVariable String id,
+            @RequestBody OpenSectionDTO dto
+            ) {
+        var command = new OpenSectionCommand(this.repository, this.eventBus);
+        return command.run(dto);
     }
 
 }

@@ -6,7 +6,6 @@ import com.eduortza.pepeducacion.core.fleetManagement.vehicles.domain.ITV;
 import com.eduortza.pepeducacion.core.fleetManagement.vehicles.domain.Vehicle;
 import com.eduortza.pepeducacion.core.shared.application.ICommand;
 import com.eduortza.pepeducacion.core.shared.application.IEventBus;
-import com.eduortza.pepeducacion.core.shared.domain.DomainException;
 import com.eduortza.pepeducacion.core.shared.domain.Plate;
 import com.eduortza.pepeducacion.core.shared.domain.Result;
 
@@ -40,7 +39,7 @@ public class BuyVehicleCommand implements ICommand<BuyVehicleDTO, Vehicle> {
             this.repository.save(vehicle);
             this.bus.publish(vehicle.pullDomainEvents());
             return Result.success(vehicle);
-        } catch (DomainException exception) {
+        } catch (Exception exception) {
             return Result.failure(exception.getMessage());
         }
 

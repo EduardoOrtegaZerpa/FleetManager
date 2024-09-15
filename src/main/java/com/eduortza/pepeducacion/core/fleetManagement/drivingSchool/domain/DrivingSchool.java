@@ -42,6 +42,6 @@ public class DrivingSchool extends AggregateRoot {
     }
 
     public void removeTeacher(DNI dni) {
-        this.teachers.removeIf(teacher -> teacher.getDNI().equals(dni));
+        this.teachers.removeIf(teacher -> teacher.getDNI().getDni().equals(dni.getDni()));
     }
 }

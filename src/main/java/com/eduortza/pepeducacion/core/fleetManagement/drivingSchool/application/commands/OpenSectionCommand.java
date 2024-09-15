@@ -22,6 +22,7 @@ public class OpenSectionCommand implements ICommand<OpenSectionDTO, Section> {
     @Override
     public Result<Section> run(OpenSectionDTO request) {
         try {
+            if(request.drivingSchoolId() == null) return Result.failure("Driving school id is missing");
             var uuid = UUID.fromString(request.drivingSchoolId());
             var section = createSectionFromRequest(request);
             var optionalDrivingSchool = this.repository.findById(uuid);
@@ -33,8 +34,8 @@ public class OpenSectionCommand implements ICommand<OpenSectionDTO, Section> {
             this.repository.save(drivingSchool);
             this.bus.publish(drivingSchool.pullDomainEvents());
             return Result.success(section);
-        }catch (DomainException exception){
-            return Result.failure(exception.getMessage());
+        } catch (Exception exception){
+           return Result.failure(exception.getMessage());
         }
     }
 

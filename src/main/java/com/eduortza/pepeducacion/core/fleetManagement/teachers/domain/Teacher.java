@@ -33,7 +33,6 @@ public class Teacher extends AggregateRoot {
      }
 
     public void fire() {
-        this.drivingSchool = null;
         this.makeInactive();
         this.recordEvent(TeacherHasBeenFiredEvent.from(this));
     }

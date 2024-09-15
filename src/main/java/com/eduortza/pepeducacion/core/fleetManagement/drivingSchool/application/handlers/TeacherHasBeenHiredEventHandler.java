@@ -20,12 +20,10 @@ public class TeacherHasBeenHiredEventHandler implements IEventHandler {
     public void handle(DomainEvent event) {
         var drivingSchoolId = event.getPayload().get("drivingSchoolId");
         var uuid = UUID.fromString(drivingSchoolId);
-        var teacherDni = event.getPayload().get("dni");
         var optionalDrivingSchool = this.repository.findById(uuid);
-        var teacherId = event.getAggregateId();
         if(optionalDrivingSchool.isEmpty()) return;
         var drivingSchool = optionalDrivingSchool.get();
-        drivingSchool.removeTeacher(new DNI(teacherDni));
+        drivingSchool.addTeacher(new Teacher(new DNI(event.getPayload().get("dni"))));
         repository.save(drivingSchool);
     }
 

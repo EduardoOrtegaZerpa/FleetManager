@@ -14,7 +14,7 @@ public class TeacherHasBeenHiredEvent extends DomainEvent {
     public static TeacherHasBeenHiredEvent from(Teacher teacher){
         return new TeacherHasBeenHiredEvent(
                 teacher.getId().toString(),
-                teacher.getDni().toString(),
+                teacher.getDni().getDni(),
                 teacher.getName(),
                 teacher.getSurname(),
                 teacher.getDrivingSchool().toString());

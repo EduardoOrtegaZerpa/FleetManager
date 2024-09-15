@@ -13,6 +13,11 @@ public class InMemoryRepository<T extends Entity> implements IRepository<T> {
 
     @Override
     public void save(T entity) {
+        // Check if an entity with the same ID already exists
+        Optional<T> existingEntity = findById(entity.getId());
+        // If it exists, remove it and add the updated entity
+        existingEntity.ifPresent(entities::remove);
+        // Add the entity (whether new or updated)
         entities.add(entity);
     }
 

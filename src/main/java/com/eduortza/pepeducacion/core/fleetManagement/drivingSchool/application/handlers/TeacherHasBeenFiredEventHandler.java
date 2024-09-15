@@ -19,11 +19,16 @@ public class TeacherHasBeenFiredEventHandler implements IEventHandler {
     @Override
     public void handle(DomainEvent event) {
         var drivingSchoolId = event.getPayload().get("drivingSchoolId");
+        System.out.println(drivingSchoolId);
         var uuid = UUID.fromString(drivingSchoolId);
+        var teacherDni = event.getPayload().get("dni");
+        System.out.println(teacherDni);
         var optionalDrivingSchool = this.repository.findById(uuid);
+        var teacherId = event.getAggregateId();
         if(optionalDrivingSchool.isEmpty()) return;
         var drivingSchool = optionalDrivingSchool.get();
-        drivingSchool.addTeacher(new Teacher(new DNI(event.getPayload().get("dni"))));
+        drivingSchool.removeTeacher(new DNI(teacherDni));
+        System.out.println(drivingSchool.getTeachers());
         repository.save(drivingSchool);
     }
 
