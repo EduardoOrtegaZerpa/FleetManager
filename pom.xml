@@ -74,6 +74,12 @@
 			<artifactId>gson</artifactId>
 			<version>2.11.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.5.2.Final</version> <!-- This should match the Hibernate version -->
+		</dependency>
+
 	</dependencies>
 
 	<build>

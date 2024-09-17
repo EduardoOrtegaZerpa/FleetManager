@@ -12,21 +12,24 @@ import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.DrivingSchool;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Section;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.repositories.InMemoryDrivingSchoolRepository;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.repositories.SpringDrivingSchoolRepository;
 import com.eduortza.pepeducacion.core.shared.application.IEventBus;
 import com.eduortza.pepeducacion.core.shared.domain.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import java.util.List;
 
 @RestController("driving_schools")
 @RequestMapping("/v1/driving_schools")
 public class DrivingSchoolsController {
-    private final IDrivingSchoolRepository repository = new InMemoryDrivingSchoolRepository();
+    private final IDrivingSchoolRepository repository;
     private final IEventBus eventBus;
 
     @Autowired
-    public DrivingSchoolsController(IEventBus eventBus) {
+    public DrivingSchoolsController(IEventBus eventBus, IDrivingSchoolRepository repository) {
+        this.repository = repository;
         this.eventBus = eventBus;
         eventBus.subscribe(new TeacherHasBeenHiredEventHandler(repository));
         eventBus.subscribe(new TeacherHasBeenFiredEventHandler(repository));

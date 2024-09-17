@@ -5,15 +5,17 @@ import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Drivi
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.mappers.DrivingSchoolMapper;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models.DrivingSchoolModel;
 import com.eduortza.pepeducacion.core.shared.infrastructure.JPASpringRepository;
-import com.eduortza.pepeducacion.core.shared.infrastructure.SpringRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class SpringDrivingSchoolRepository implements IDrivingSchoolRepository {
 
+@Repository
+public class SpringDrivingSchoolRepository implements IDrivingSchoolRepository {
     private final JPASpringRepository<DrivingSchoolModel> repository;
 
     public SpringDrivingSchoolRepository(JPASpringRepository<DrivingSchoolModel> repository) {
