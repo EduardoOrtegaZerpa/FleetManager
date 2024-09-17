@@ -4,5 +4,5 @@ import com.eduortza.pepeducacion.core.fleetManagement.vehicles.application.ports
 import com.eduortza.pepeducacion.core.fleetManagement.vehicles.domain.Vehicle;
 import com.eduortza.pepeducacion.core.shared.infrastructure.InMemoryRepository;
 
-public class InMemoryVehicleRepository extends InMemoryRepository<Vehicle>  implements IVehiclesRepository {
+public class InMemoryVehicleRepository extends InMemoryRepository<Vehicle> implements IVehiclesRepository {
 }

@@ -11,7 +11,7 @@ import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.queries.GetDrivingSchoolsQuery;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.DrivingSchool;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Section;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.InMemoryDrivingSchoolRepository;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.repositories.InMemoryDrivingSchoolRepository;
 import com.eduortza.pepeducacion.core.shared.application.IEventBus;
 import com.eduortza.pepeducacion.core.shared.domain.Result;
 import org.springframework.beans.factory.annotation.Autowired;

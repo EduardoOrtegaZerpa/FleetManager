@@ -1,4 +1,4 @@
-package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure;
+package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.repositories;
 
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.ports.IDrivingSchoolRepository;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.DrivingSchool;
