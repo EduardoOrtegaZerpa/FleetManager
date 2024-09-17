@@ -1,7 +1,7 @@
-package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.mappers;
+package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.mappers;
 
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Vehicle;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models.VehicleModel;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models.VehicleModel;
 
 public class VehicleMapper {
 

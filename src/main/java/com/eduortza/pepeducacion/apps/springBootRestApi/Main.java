@@ -7,8 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.repositories")  // Your repository package
-@EntityScan(basePackages = "com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models")  // Your repository package
+@EnableJpaRepositories(basePackages = "com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.repositories")  // Your repository package
+@EntityScan(basePackages = "com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models")  // Your repository package
 @ComponentScan(basePackages = "com.eduortza.pepeducacion")  // Your base package
 public class Main {
 	public static void main(String[] args) {

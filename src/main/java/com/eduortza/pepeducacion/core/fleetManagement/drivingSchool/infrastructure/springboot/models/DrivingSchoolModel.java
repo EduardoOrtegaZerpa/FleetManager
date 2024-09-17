@@ -1,6 +1,5 @@
-package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models;
+package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models;
 
-import com.eduortza.pepeducacion.core.shared.domain.AggregateRoot;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,9 +13,9 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "driving_school")
-public class DrivingSchoolModel extends AggregateRoot {
+public class DrivingSchoolModel{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "BINARY(16)")
     private UUID id;
     @Column(nullable = false)
     private String CIF;

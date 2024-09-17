@@ -1,10 +1,10 @@
-package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.mappers;
+package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.mappers;
 
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.*;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models.DrivingSchoolModel;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models.SectionModel;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models.TeacherModel;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models.VehicleModel;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models.DrivingSchoolModel;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models.SectionModel;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models.TeacherModel;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models.VehicleModel;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,12 +31,14 @@ public class DrivingSchoolMapper {
                 .map(VehicleMapper::toDomain)
                 .collect(Collectors.toList());
         drivingSchool.setVehicles(vehicles);
+        drivingSchool.setId(model.getId());
 
         return drivingSchool;
     }
 
     public static DrivingSchoolModel toModel(DrivingSchool domain) {
         DrivingSchoolModel model = new DrivingSchoolModel();
+        model.setId(domain.getId());
         model.setCIF(domain.getCIF().getCif());
         model.setName(domain.getName());
 

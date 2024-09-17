@@ -11,14 +11,13 @@ import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.queries.GetDrivingSchoolsQuery;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.DrivingSchool;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Section;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.repositories.InMemoryDrivingSchoolRepository;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.repositories.SpringDrivingSchoolRepository;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.repositories.SpringDrivingSchoolJpaRepository;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.repositories.SpringDrivingSchoolRepository;
 import com.eduortza.pepeducacion.core.shared.application.IEventBus;
 import com.eduortza.pepeducacion.core.shared.domain.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.*;
 import java.util.List;
 
 @RestController("driving_schools")
@@ -28,12 +27,12 @@ public class DrivingSchoolsController {
     private final IEventBus eventBus;
 
     @Autowired
-    public DrivingSchoolsController(IEventBus eventBus, IDrivingSchoolRepository repository) {
-        this.repository = repository;
+    public DrivingSchoolsController(IEventBus eventBus, SpringDrivingSchoolJpaRepository repository) {
+        this.repository = new SpringDrivingSchoolRepository(repository);
         this.eventBus = eventBus;
-        eventBus.subscribe(new TeacherHasBeenHiredEventHandler(repository));
-        eventBus.subscribe(new TeacherHasBeenFiredEventHandler(repository));
-        eventBus.subscribe(new VehicleHasBeenBuyedEventHandler(repository));
+        eventBus.subscribe(new TeacherHasBeenHiredEventHandler(this.repository));
+        eventBus.subscribe(new TeacherHasBeenFiredEventHandler(this.repository));
+        eventBus.subscribe(new VehicleHasBeenBuyedEventHandler(this.repository));
     }
 
     @GetMapping("/")

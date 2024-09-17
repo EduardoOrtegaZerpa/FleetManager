@@ -1,7 +1,7 @@
-package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.mappers;
+package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.mappers;
 
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Section;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models.SectionModel;
+import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models.SectionModel;
 
 public class SectionMapper {
 

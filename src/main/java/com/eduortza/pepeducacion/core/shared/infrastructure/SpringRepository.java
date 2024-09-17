@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository
 public class SpringRepository<T extends Entity> implements IRepository<T> {
 
     private final JPASpringRepository<T> repository;

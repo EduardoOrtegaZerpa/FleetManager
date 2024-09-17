@@ -13,4 +13,6 @@ import lombok.ToString;
 public class Location extends ValueObject {
     private double latitude;
     private double longitude;
+
+    public Location(){}
 }

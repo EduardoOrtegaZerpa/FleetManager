@@ -1,7 +1,6 @@
-package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.models;
+package com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.models;
 
 import com.eduortza.pepeducacion.core.shared.domain.Plate;
-import com.eduortza.pepeducacion.core.shared.domain.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,9 +13,10 @@ import java.util.UUID;
 @Data
 @jakarta.persistence.Entity
 @Table(name = "vehicle")
-public class VehicleModel extends Entity{
+public class VehicleModel{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "BINARY(16)")
     private UUID id;
     @Embedded
     @Column(nullable = false)
