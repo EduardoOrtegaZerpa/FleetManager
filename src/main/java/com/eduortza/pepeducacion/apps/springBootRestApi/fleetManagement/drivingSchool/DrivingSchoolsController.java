@@ -11,7 +11,6 @@ import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.application.queries.GetDrivingSchoolsQuery;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.DrivingSchool;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.domain.Section;
-import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.mock.InMemoryDrivingSchoolRepository;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.repositories.SpringDrivingSchoolJpaRepository;
 import com.eduortza.pepeducacion.core.fleetManagement.drivingSchool.infrastructure.springboot.repositories.SpringDrivingSchoolRepository;
 import com.eduortza.pepeducacion.core.shared.application.IEventBus;
@@ -28,8 +27,8 @@ public class DrivingSchoolsController {
     private final IEventBus eventBus;
 
     @Autowired
-    public DrivingSchoolsController(IEventBus eventBust) {
-        this.repository = new InMemoryDrivingSchoolRepository();
+    public DrivingSchoolsController(IEventBus eventBus, SpringDrivingSchoolJpaRepository repository) {
+        this.repository = new SpringDrivingSchoolRepository(repository);
         this.eventBus = eventBus;
         eventBus.subscribe(new TeacherHasBeenHiredEventHandler(this.repository));
         eventBus.subscribe(new TeacherHasBeenFiredEventHandler(this.repository));
