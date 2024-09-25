@@ -28,7 +28,7 @@ public class DrivingSchoolsController {
     private final IEventBus eventBus;
 
     @Autowired
-    public DrivingSchoolsController(IEventBus eventBus, SpringDrivingSchoolJpaRepository repository) {
+    public DrivingSchoolsController(IEventBus eventBust) {
         this.repository = new InMemoryDrivingSchoolRepository();
         this.eventBus = eventBus;
         eventBus.subscribe(new TeacherHasBeenHiredEventHandler(this.repository));
