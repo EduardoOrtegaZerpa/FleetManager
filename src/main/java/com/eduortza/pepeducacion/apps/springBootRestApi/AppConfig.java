@@ -9,12 +9,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-
     @Bean
-//    public IEventBus eventBus() {
-//        return new SqsEventBus("https://sqs.us-east-1.amazonaws.com/701368024543/queue");
-//    }
     public IEventBus eventBus() {
-        return new InMemoryEventBus();
+        return new SqsEventBus("https://sqs.us-east-1.amazonaws.com/701368024543/queue");
     }
 }
