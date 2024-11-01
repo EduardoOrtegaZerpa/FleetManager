@@ -11,10 +11,16 @@ import java.util.Map;
 
 @Getter
 public class DomainEvent {
-    private final String eventId;
-    private final String aggregateId;
-    private final String occurredOn;
-    private final Map<String, String> payload;
+    private String eventId;
+    private String aggregateId;
+    private String occurredOn;
+    private Map<String, String> payload;
+
+    // Constructor sin argumentos para Jackson
+    public DomainEvent() {
+        this.payload = new HashMap<>();
+        this.occurredOn = LocalDate.now().toString();
+    }
 
     public DomainEvent(String aggregateId, String eventId) {
         this.aggregateId = aggregateId;
