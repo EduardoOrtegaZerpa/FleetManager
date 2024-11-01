@@ -8,6 +8,10 @@ import lombok.ToString;
 public class DNI extends ValueObject {
     private final String dni;
 
+    private DNI() {
+        this.dni = null;
+    }
+
     public DNI(String dni) {
         if (!isValid(dni)) {
             throw new DomainException("El DNI no es válido");
